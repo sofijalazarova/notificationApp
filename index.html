@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notification</title>
+    <script src="script.js" defer></script>
+    <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
+
+    body {
+      font-family: "Geist Mono", monospace;
+    }
+
+      #notification-container {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        row-gap: 16px;
+        align-items: start; 
+        max-width: 900px;
+        margin: 40px auto;
+      }
+
+      .notification-label {
+        font-weight: bold;
+        padding-top: 5px;
+      }
+
+      .notification {
+        background-color: #FFFFFF;
+        color: black;
+        padding: 16px 20px;
+        border-radius: 8px;
+        position: relative;
+        border: 1px solid black;
+        overflow: hidden;
+        opacity: 0;
+        animation: fadeIn 0.3s forwards;
+      }
+
+      .notification h4 {
+        margin: 0 0 8px;
+        font-size: 16px;
+      }
+
+      .notification p {
+        margin: 0;
+        font-size: 14px;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        background: none;
+        border: 1px solid lightgray;
+        color: black;
+        font-size: 16px;
+        cursor: pointer;
+        width: 36px;
+        height: 36px;
+      }
+
+      .progress-bar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 80px;
+        background-color: #F1F5F9;
+        opacity: 0.3;
+        animation: fillBar linear forwards;
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fillBar {
+        from {
+          width: 0%;
+        }
+        to {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>  
+    <div>
+      <h3>NOTIFICATION / SINGLE BUTTON</h2>
+      <div id="notification-container">
+      </div>
+    </div>
+  </body>
+</html>
