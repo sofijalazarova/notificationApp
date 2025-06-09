@@ -1,65 +1,173 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notification Task</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap");
+      * {
+        font-family: "Geist Mono", monospace;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        height: 100%;
+      }
+
+      .grid-container {
+        width: 100%;
+        font-size: 40px;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-template-rows: 1fr 2fr 2fr;
+        height: 100%;
+      }
+
+      .grid-item-1 {
+        background-color: red;
+      }
+
+      .grid-item-2 {
+        background-color: green;
+      }
+      .grid-item-3 {
+        background-color: blue;
+      }
+      .grid-item-4 {
+        background-color: yellow;
+      }
+      .grid-item-5 {
+        background-color: purple;
+      }
+      .grid-item-6 {
+        background-color: orange;
+      }
+      .grid-item-7 {
+        background-color: grey;
+      }
+      .grid-item-8 {
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="grid-item-1">1</div>
+      <div class="grid-item-2">2</div>
+      <div class="grid-item-3">3</div>
+      <div class="grid-item-4">4</div>
+      <div class="grid-item-5">5</div>
+      <div class="grid-item-6">6</div>
+    </div>
+  </body>
+</html> -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Notification</title>
-    <script src="script.js" defer></script>
+    <title>Notification System</title>
+
     <style>
-
-    @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
-
-    body {
-      font-family: "Geist Mono", monospace;
-    }
-
-      #notification-container {
-        display: grid;
-        grid-template-columns: 150px 1fr;
-        row-gap: 16px;
-        align-items: start; 
-        max-width: 900px;
-        margin: 40px auto;
-      }
-
-      .notification-label {
-        font-weight: bold;
-        padding-top: 5px;
-      }
-
-      .notification {
-        background-color: #FFFFFF;
-        color: black;
-        padding: 16px 20px;
-        border-radius: 8px;
-        position: relative;
-        border: 1px solid black;
-        overflow: hidden;
-        opacity: 0;
-        animation: fadeIn 0.3s forwards;
-      }
-
-      .notification h4 {
-        margin: 0 0 8px;
-        font-size: 16px;
-      }
-
-      .notification p {
+      @import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap");
+      * {
+        font-family: "Geist Mono", monospace;
         margin: 0;
-        font-size: 14px;
+        padding: 0;
+      }
+
+      body {
+        background-color: #f5f5f5;
+      }
+
+      .grid-container {
+        font-size: 25px;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-template-rows: 1fr 2fr 2fr;
+        width: 100%;
+        height: 100%;
+      }
+
+      .grid-item-1 {
+        border: 1px #6366f1 dashed;
+      }
+
+      .grid-item-2 {
+        border-top: 1px #6366f1 dashed;
+        border-right: 1px #6366f1 dashed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #6366f1;
+      }
+      .grid-item-3 {
+        border-left: 1px #6366f1 dashed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #6366f1;
+      }
+      .grid-item-4 {
+        border: 1px #6366f1 dashed;
+        display: flex;
+        /* justify-content: center; */
+        /* align-items: center; */
+      }
+      .grid-item-5 {
+        border: 1px #6366f1 dashed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #6366f1;
+      }
+      .grid-item-6 {
+        border-bottom: 1px #6366f1 dashed;
+        border-right: 1px #6366f1 dashed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .notification-container {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        border: 1px solid lightgray;
+        max-width: 60%;
+        width: 100%;
+        max-height: 40%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        background-color: white;
+      }
+
+      .notification-content {
+        display: flex;
+        background-color: white;
       }
 
       .close-btn {
-        position: absolute;
-        top: 8px;
-        right: 10px;
-        background: none;
+        padding: 6px;
         border: 1px solid lightgray;
         color: black;
         font-size: 16px;
+        width: 50px;
+        height: 50px;
+        border-radius: 5px;
         cursor: pointer;
-        width: 36px;
-        height: 36px;
+      }
+
+      .notification-box {
+        padding: 30px;
+        text-align: left;
+        background-color: white;
       }
 
       .progress-bar {
@@ -67,7 +175,7 @@
         bottom: 0;
         left: 0;
         height: 80px;
-        background-color: #F1F5F9;
+        background-color: #f1f5f9;
         opacity: 0.3;
         animation: fillBar linear forwards;
       }
@@ -88,10 +196,41 @@
       }
     </style>
   </head>
-  <body>  
-    <div>
-      <h3>NOTIFICATION / SINGLE BUTTON</h2>
-      <div id="notification-container">
+  <body>
+    <div class="grid-container">
+      <div class="grid-item-1"></div>
+      <div class="grid-item-2">
+        <h4>Layouts</h4>
+      </div>
+      <div class="grid-item-3">
+        <h4>Permanent</h4>
+      </div>
+      <div class="grid-item-4">
+        <div class="notification-container">
+          <div class="notification-box">
+            <h4>Very important title of the notification</h4>
+            <div class="notification-content">
+              <p>
+                Notification may extend two across lines. We prefer to keep them
+                concise.
+              </p>
+              <button class="close-btn">X</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid-item-5">
+        <h4>Temporary</h4>
+      </div>
+      <div class="grid-item-6">
+        <div class="notification-container">
+          <div class="notification-box">
+            <p>
+              Notification may extend two across lines. We prefer to keep them
+              concise.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </body>
