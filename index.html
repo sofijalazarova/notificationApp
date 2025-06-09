@@ -13,17 +13,22 @@
         padding: 0;
       }
 
+      html,
+      body {
+        height: 100%;
+      }
+
       body {
         background-color: #f5f5f5;
       }
 
       .grid-container {
-        font-size: 25px;
+        font-size: 20px;
         display: grid;
         grid-template-columns: 1fr 3fr;
         grid-template-rows: 1fr 2fr 2fr;
-        width: 100%;
-        height: 100%;
+        width: 90%;
+        height: 90%;
       }
 
       .grid-item-1 {
@@ -48,8 +53,6 @@
       .grid-item-4 {
         border: 1px #6366f1 dashed;
         display: flex;
-        /* justify-content: center; */
-        /* align-items: center; */
       }
       .grid-item-5 {
         border: 1px #6366f1 dashed;
@@ -67,6 +70,7 @@
       }
 
       .notification-container {
+        position: relative;
         display: flex;
         flex-direction: column;
         margin: auto;
@@ -105,65 +109,68 @@
 
       .progress-bar {
         position: absolute;
-        bottom: 0;
-        left: 0;
-        height: 80px;
-        background-color: #f1f5f9;
-        opacity: 0.3;
-        animation: fillBar linear forwards;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 0;
+        border-radius: 10px;
       }
 
-      @keyframes fadeIn {
-        to {
-          opacity: 1;
-        }
+      .progress-bar::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(201, 201, 213, 0.2);
+        animation: fillRightToLeft 4s linear forwards;
       }
 
-      @keyframes fillBar {
+      @keyframes fillRightToLeft {
         from {
           width: 0%;
+          left: 0;
         }
         to {
           width: 100%;
+          left: 0;
         }
       }
+
+      .wrapper {
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+      }
     </style>
+
+    <script src="script.js"></script>
   </head>
   <body>
-    <div class="grid-container">
-      <div class="grid-item-1"></div>
-      <div class="grid-item-2">
-        <h4>Layouts</h4>
-      </div>
-      <div class="grid-item-3">
-        <h4>Permanent</h4>
-      </div>
-      <div class="grid-item-4">
-        <div class="notification-container">
-          <div class="notification-box">
-            <h4>Very important title of the notification</h4>
-            <div class="notification-content">
-              <p>
-                Notification may extend two across lines. We prefer to keep them
-                concise.
-              </p>
-              <button class="close-btn">X</button>
-            </div>
-          </div>
+    <button
+      onclick="showNotification('Very important title of the notification','Notification may extend two across lines. We prefer to keep them concise.','permanent')"
+      style="position: fixed; top: 10px; left: 150px; padding: 10px"
+    >
+      Show Notification
+    </button>
+    <div class="wrapper">
+      <div class="grid-container">
+        <div class="grid-item-1"></div>
+        <div class="grid-item-2">
+          <h4>Layouts</h4>
         </div>
-      </div>
-      <div class="grid-item-5">
-        <h4>Temporary</h4>
-      </div>
-      <div class="grid-item-6">
-        <div class="notification-container">
-          <div class="notification-box">
-            <p>
-              Notification may extend two across lines. We prefer to keep them
-              concise.
-            </p>
-          </div>
+        <div class="grid-item-3">
+          <h4>Permanent</h4>
         </div>
+        <div class="grid-item-4"></div>
+        <div class="grid-item-5">
+          <h4>Temporary</h4>
+        </div>
+        <div class="grid-item-6"></div>
       </div>
     </div>
   </body>
